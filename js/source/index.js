@@ -2,11 +2,9 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Logo from './components/Logo';
+import Carousel from './components/Carousel';
 
 ReactDOM.render(
-	<h1>
-		<Logo /> Welcome to React 
-	</h1>,
+		<Carousel />,
 	document.getElementById('app')
 	);

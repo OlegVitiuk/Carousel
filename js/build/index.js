@@ -8,15 +8,10 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _Logo = require('./components/Logo');
+var _Carousel = require('./components/Carousel');
 
-var _Logo2 = _interopRequireDefault(_Logo);
+var _Carousel2 = _interopRequireDefault(_Carousel);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(
-	'h1',
-	null,
-	_react2.default.createElement(_Logo2.default, null),
-	' Welcome to React'
-), document.getElementById('app'));
+_reactDom2.default.render(_react2.default.createElement(_Carousel2.default, null), document.getElementById('app'));
