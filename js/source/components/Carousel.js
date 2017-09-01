@@ -8,10 +8,6 @@ class Carousel extends Component{
 		super(props);
 		this.handleLeftNav = this.handleLeftNav.bind(this);
 		this.handleRightNav = this.handleRightNav.bind(this);
-		this.onResize = this.onResize.bind(this);
-		this.state={
-			numberOfSlidesToScroll: 3
-		}
 	}
 
 	renderSlides(){
@@ -19,7 +15,7 @@ class Carousel extends Component{
 			 return (
 			 	<Slide 
 					image={obj.image}
-					key={obj.abbreviation}
+					key={obj.index}
 			/>
 			);
 		})
@@ -36,16 +32,14 @@ class Carousel extends Component{
 	handleLeftNav(e){
 		const {
 			carouselViewPort} = this.refs;
-			var numberOfSlidesToScroll = this.state.numberOfSlidesToScroll;
-			var widthOfSlide = 120;
-			var newPos = carouselViewPort.scrollLeft - (widthOfSlide*numberOfSlidesToScroll);
+			var widthOfSlide = 500;
+			var newPos = carouselViewPort.scrollLeft - widthOfSlide;
 			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
 			var timeToMoveOneSlide = 200;
-			var totalTimeToMove = Math.min((numberOfSlidesToScroll * timeToMoveOneSlide),400);
 			scrollTo({
 				element: carouselViewPort,
 				to: newPos,
-				duration: totalTimeToMove,
+				duration: timeToMoveOneSlide,
 				scrollDirection: 'scrollLeft'
 			});
 	}
@@ -53,16 +47,14 @@ class Carousel extends Component{
 	handleRightNav(e){
 		const {
 			carouselViewPort} = this.refs;
-			var numberOfSlidesToScroll = this.state.numberOfSlidesToScroll;
-			var widthOfSlide = 120;
-			var newPos = carouselViewPort.scrollLeft + (widthOfSlide*numberOfSlidesToScroll);
+			var widthOfSlide = 500;
+			var newPos = carouselViewPort.scrollLeft  + widthOfSlide;
 			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
 			var timeToMoveOneSlide = 200;
-			var totalTimeToMove = Math.min((numberOfSlidesToScroll * timeToMoveOneSlide),400);
 			scrollTo({
 				element: carouselViewPort,
 				to: newPos,
-				duration: totalTimeToMove,
+				duration: timeToMoveOneSlide,
 				scrollDirection: 'scrollLeft'
 			});
 	}
@@ -70,7 +62,7 @@ class Carousel extends Component{
 	render() {
 		return (
 				<div className="wrapper">
-					<button 
+					<button
 						className="nav left-nav"
 						onClick={this.handleLeftNav}
 
@@ -78,7 +70,7 @@ class Carousel extends Component{
 					<div className="viewPort" ref="carouselViewPort">
 						{this.renderSlides()}
 					</div>
-					<button 
+					<button
 						className="nav right-nav"
 						onClick={this.handleRightNav}
 						>&#62;</button>

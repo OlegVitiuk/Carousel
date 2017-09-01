@@ -40,10 +40,6 @@ var Carousel = function (_Component) {
 
 		_this.handleLeftNav = _this.handleLeftNav.bind(_this);
 		_this.handleRightNav = _this.handleRightNav.bind(_this);
-		_this.onResize = _this.onResize.bind(_this);
-		_this.state = {
-			numberOfSlidesToScroll: 3
-		};
 		return _this;
 	}
 
@@ -53,7 +49,7 @@ var Carousel = function (_Component) {
 			return _data2.default.map(function (obj) {
 				return _react2.default.createElement(_Slide2.default, {
 					image: obj.image,
-					key: obj.abbreviation
+					key: obj.index
 				});
 			});
 		}
@@ -77,16 +73,14 @@ var Carousel = function (_Component) {
 		value: function handleLeftNav(e) {
 			var carouselViewPort = this.refs.carouselViewPort;
 
-			var numberOfSlidesToScroll = this.state.numberOfSlidesToScroll;
-			var widthOfSlide = 120;
-			var newPos = carouselViewPort.scrollLeft - widthOfSlide * numberOfSlidesToScroll;
+			var widthOfSlide = 500;
+			var newPos = carouselViewPort.scrollLeft - widthOfSlide;
 			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
 			var timeToMoveOneSlide = 200;
-			var totalTimeToMove = Math.min(numberOfSlidesToScroll * timeToMoveOneSlide, 400);
 			(0, _scrollTo2.default)({
 				element: carouselViewPort,
 				to: newPos,
-				duration: totalTimeToMove,
+				duration: timeToMoveOneSlide,
 				scrollDirection: 'scrollLeft'
 			});
 		}
@@ -95,16 +89,14 @@ var Carousel = function (_Component) {
 		value: function handleRightNav(e) {
 			var carouselViewPort = this.refs.carouselViewPort;
 
-			var numberOfSlidesToScroll = this.state.numberOfSlidesToScroll;
-			var widthOfSlide = 120;
-			var newPos = carouselViewPort.scrollLeft + widthOfSlide * numberOfSlidesToScroll;
+			var widthOfSlide = 500;
+			var newPos = carouselViewPort.scrollLeft + widthOfSlide;
 			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
 			var timeToMoveOneSlide = 200;
-			var totalTimeToMove = Math.min(numberOfSlidesToScroll * timeToMoveOneSlide, 400);
 			(0, _scrollTo2.default)({
 				element: carouselViewPort,
 				to: newPos,
-				duration: totalTimeToMove,
+				duration: timeToMoveOneSlide,
 				scrollDirection: 'scrollLeft'
 			});
 		}

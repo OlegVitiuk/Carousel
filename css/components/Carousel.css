@@ -1,13 +1,16 @@
 .wrapper{
 	display: flex;
+	justify-content:center;
 }
 .viewPort{
 	white-space: nowrap;
 	overflow-y: hidden;
 	overflow-x: auto;
 	-webkit-overflow-scrolling: touch;
-	border: 1px solid black;
 	flex-grow: 1;
+	max-width:1192px;
+	border-top: 2px solid darkgray;
+	border-bottom: 2px solid darkgray;
 }
 .viewPort::-webkit-scrollbar{
 	display: none;
@@ -18,10 +21,12 @@
 	cursor: pointer;
 	background-color: grey;
 	padding: 0;
-	border: 1px solid blue;
 	outline: none;
 	opacity: .8;
 	transition: opacity .2s ease-in-out;
+	border:1px solid darkgray;
+	font-size: 30px;
+	color: #ddd;
 }
 
 .nav:focus{
