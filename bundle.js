@@ -467,6 +467,10 @@ var Carousel = function (_Component) {
 
 		_this.handleLeftNav = _this.handleLeftNav.bind(_this);
 		_this.handleRightNav = _this.handleRightNav.bind(_this);
+		_this.onResize = _this.onResize.bind(_this);
+		_this.state = {
+			numberOfSlidesToScroll: 3
+		};
 		return _this;
 	}
 
@@ -481,11 +485,26 @@ var Carousel = function (_Component) {
 			});
 		}
 	}, {
+		key: 'onResize',
+		value: function onResize() {
+			console.log("resizing");
+		}
+	}, {
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			window.addEventListener('resize', this.onResize);
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			window.removeEventListener('resize', this.onResize);
+		}
+	}, {
 		key: 'handleLeftNav',
 		value: function handleLeftNav(e) {
 			var carouselViewPort = this.refs.carouselViewPort;
 
-			var numberOfSlidesToScroll = 4;
+			var numberOfSlidesToScroll = this.state.numberOfSlidesToScroll;
 			var widthOfSlide = 120;
 			var newPos = carouselViewPort.scrollLeft - widthOfSlide * numberOfSlidesToScroll;
 			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
@@ -503,7 +522,7 @@ var Carousel = function (_Component) {
 		value: function handleRightNav(e) {
 			var carouselViewPort = this.refs.carouselViewPort;
 
-			var numberOfSlidesToScroll = 4;
+			var numberOfSlidesToScroll = this.state.numberOfSlidesToScroll;
 			var widthOfSlide = 120;
 			var newPos = carouselViewPort.scrollLeft + widthOfSlide * numberOfSlidesToScroll;
 			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;

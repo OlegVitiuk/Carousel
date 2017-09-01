@@ -8,6 +8,10 @@ class Carousel extends Component{
 		super(props);
 		this.handleLeftNav = this.handleLeftNav.bind(this);
 		this.handleRightNav = this.handleRightNav.bind(this);
+		this.onResize = this.onResize.bind(this);
+		this.state={
+			numberOfSlidesToScroll: 3
+		}
 	}
 
 	renderSlides(){
@@ -20,11 +24,19 @@ class Carousel extends Component{
 			);
 		})
 	}
-
+	onResize(){
+		console.log("resizing");
+	}
+	componentDidMount() {
+		window.addEventListener('resize',this.onResize);
+	}
+	componentWillUnmount() {
+		window.removeEventListener('resize',this.onResize);
+	}
 	handleLeftNav(e){
 		const {
 			carouselViewPort} = this.refs;
-			var numberOfSlidesToScroll = 4;
+			var numberOfSlidesToScroll = this.state.numberOfSlidesToScroll;
 			var widthOfSlide = 120;
 			var newPos = carouselViewPort.scrollLeft - (widthOfSlide*numberOfSlidesToScroll);
 			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
@@ -41,7 +53,7 @@ class Carousel extends Component{
 	handleRightNav(e){
 		const {
 			carouselViewPort} = this.refs;
-			var numberOfSlidesToScroll = 4;
+			var numberOfSlidesToScroll = this.state.numberOfSlidesToScroll;
 			var widthOfSlide = 120;
 			var newPos = carouselViewPort.scrollLeft + (widthOfSlide*numberOfSlidesToScroll);
 			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
