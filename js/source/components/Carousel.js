@@ -22,18 +22,37 @@ class Carousel extends Component{
 	}
 
 	handleLeftNav(e){
-		console.log("left clicked", this)
+		const {
+			carouselViewPort} = this.refs;
+			var numberOfSlidesToScroll = 4;
+			var widthOfSlide = 120;
+			var newPos = carouselViewPort.scrollLeft - (widthOfSlide*numberOfSlidesToScroll);
+			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
+			var timeToMoveOneSlide = 200;
+			var totalTimeToMove = Math.min((numberOfSlidesToScroll * timeToMoveOneSlide),400);
+			scrollTo({
+				element: carouselViewPort,
+				to: newPos,
+				duration: totalTimeToMove,
+				scrollDirection: 'scrollLeft'
+			});
 	}
 
 	handleRightNav(e){
 		const {
 			carouselViewPort} = this.refs;
-			var numberOfSlidesToScroll = 3.5;
+			var numberOfSlidesToScroll = 4;
 			var widthOfSlide = 120;
 			var newPos = carouselViewPort.scrollLeft + (widthOfSlide*numberOfSlidesToScroll);
+			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
 			var timeToMoveOneSlide = 200;
-			var totalTimeToMove = (numberOfSlidesToScroll * timeToMoveOneSlide);
-			scrollTo(carouselViewPort,newPos,totalTimeToMove,'scrollLeft');
+			var totalTimeToMove = Math.min((numberOfSlidesToScroll * timeToMoveOneSlide),400);
+			scrollTo({
+				element: carouselViewPort,
+				to: newPos,
+				duration: totalTimeToMove,
+				scrollDirection: 'scrollLeft'
+			});
 	}
 
 	render() {

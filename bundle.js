@@ -483,19 +483,38 @@ var Carousel = function (_Component) {
 	}, {
 		key: 'handleLeftNav',
 		value: function handleLeftNav(e) {
-			console.log("left clicked", this);
+			var carouselViewPort = this.refs.carouselViewPort;
+
+			var numberOfSlidesToScroll = 4;
+			var widthOfSlide = 120;
+			var newPos = carouselViewPort.scrollLeft - widthOfSlide * numberOfSlidesToScroll;
+			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
+			var timeToMoveOneSlide = 200;
+			var totalTimeToMove = Math.min(numberOfSlidesToScroll * timeToMoveOneSlide, 400);
+			(0, _scrollTo2.default)({
+				element: carouselViewPort,
+				to: newPos,
+				duration: totalTimeToMove,
+				scrollDirection: 'scrollLeft'
+			});
 		}
 	}, {
 		key: 'handleRightNav',
 		value: function handleRightNav(e) {
 			var carouselViewPort = this.refs.carouselViewPort;
 
-			var numberOfSlidesToScroll = 3.5;
+			var numberOfSlidesToScroll = 4;
 			var widthOfSlide = 120;
 			var newPos = carouselViewPort.scrollLeft + widthOfSlide * numberOfSlidesToScroll;
+			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
 			var timeToMoveOneSlide = 200;
-			var totalTimeToMove = numberOfSlidesToScroll * timeToMoveOneSlide;
-			(0, _scrollTo2.default)(carouselViewPort, newPos, totalTimeToMove, 'scrollLeft');
+			var totalTimeToMove = Math.min(numberOfSlidesToScroll * timeToMoveOneSlide, 400);
+			(0, _scrollTo2.default)({
+				element: carouselViewPort,
+				to: newPos,
+				duration: totalTimeToMove,
+				scrollDirection: 'scrollLeft'
+			});
 		}
 	}, {
 		key: 'render',
@@ -606,23 +625,28 @@ _reactDom2.default.render(_react2.default.createElement(_Carousel2.default, null
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-function scrollTo(element, to, duration, scrollDirection) {
+function scrollTo(params) {
+    var element = params.element,
+        to = params.to,
+        duration = params.duration,
+        scrollDirection = params.scrollDirection;
+
+
     var start = element[scrollDirection],
         change = to - start,
-        increment = 20;
+        increment = 1000 / 60;
 
     var animateScroll = function animateScroll(elapsedTime) {
         elapsedTime += increment;
         var position = easeInOut(elapsedTime, start, change, duration);
         element[scrollDirection] = position;
         if (elapsedTime < duration) {
-            setTimeout(function () {
-                animateScroll(elapsedTime);
-            }, increment);
+            window.requestAnimationFrame(animateScroll.bind(null, elapsedTime));
         }
     };
 
     animateScroll(0);
+    window.requestAnimationFrame(animateScroll.bind(null, 0));
 }
 
 function easeInOut(currentTime, start, change, duration) {

@@ -56,19 +56,38 @@ var Carousel = function (_Component) {
 	}, {
 		key: 'handleLeftNav',
 		value: function handleLeftNav(e) {
-			console.log("left clicked", this);
+			var carouselViewPort = this.refs.carouselViewPort;
+
+			var numberOfSlidesToScroll = 4;
+			var widthOfSlide = 120;
+			var newPos = carouselViewPort.scrollLeft - widthOfSlide * numberOfSlidesToScroll;
+			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
+			var timeToMoveOneSlide = 200;
+			var totalTimeToMove = Math.min(numberOfSlidesToScroll * timeToMoveOneSlide, 400);
+			(0, _scrollTo2.default)({
+				element: carouselViewPort,
+				to: newPos,
+				duration: totalTimeToMove,
+				scrollDirection: 'scrollLeft'
+			});
 		}
 	}, {
 		key: 'handleRightNav',
 		value: function handleRightNav(e) {
 			var carouselViewPort = this.refs.carouselViewPort;
 
-			var numberOfSlidesToScroll = 3.5;
+			var numberOfSlidesToScroll = 4;
 			var widthOfSlide = 120;
 			var newPos = carouselViewPort.scrollLeft + widthOfSlide * numberOfSlidesToScroll;
+			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
 			var timeToMoveOneSlide = 200;
-			var totalTimeToMove = numberOfSlidesToScroll * timeToMoveOneSlide;
-			(0, _scrollTo2.default)(carouselViewPort, newPos, totalTimeToMove, 'scrollLeft');
+			var totalTimeToMove = Math.min(numberOfSlidesToScroll * timeToMoveOneSlide, 400);
+			(0, _scrollTo2.default)({
+				element: carouselViewPort,
+				to: newPos,
+				duration: totalTimeToMove,
+				scrollDirection: 'scrollLeft'
+			});
 		}
 	}, {
 		key: 'render',
