@@ -258,6 +258,7 @@ var Carousel = function (_Component) {
 
 		_this.handleLeftNav = _this.handleLeftNav.bind(_this);
 		_this.handleRightNav = _this.handleRightNav.bind(_this);
+		_this.resizing = _this.resizing.bind(_this);
 		return _this;
 	}
 
@@ -270,6 +271,18 @@ var Carousel = function (_Component) {
 					key: obj.index
 				});
 			});
+		}
+	}, {
+		key: 'resizing',
+		value: function resizing() {
+			var carouselViewPort = this.refs.carouselViewPort;
+
+			carouselViewPort.scrollLeft = 0;
+		}
+	}, {
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			window.addEventListener('resize', this.resizing);
 		}
 	}, {
 		key: 'navHandler',

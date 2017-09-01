@@ -8,6 +8,7 @@ class Carousel extends Component{
 		super(props);
 		this.handleLeftNav = this.handleLeftNav.bind(this);
 		this.handleRightNav = this.handleRightNav.bind(this);
+		this.resizing = this.resizing.bind(this);
 	}
 
 	renderSlides(){
@@ -19,6 +20,14 @@ class Carousel extends Component{
 			/>
 			);
 		})
+	}
+	resizing(){
+        const {
+            carouselViewPort} = this.refs;
+        	carouselViewPort.scrollLeft = 0;
+	}
+	componentDidMount(){
+		window.addEventListener('resize',this.resizing)
 	}
 	navHandler(flag){
         const {
