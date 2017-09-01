@@ -30,12 +30,12 @@ var Slide = function (_Component) {
 	_createClass(Slide, [{
 		key: 'render',
 		value: function render() {
-			var name = this.props.name;
+			var image = this.props.image;
 
 			return _react2.default.createElement(
 				'div',
-				{ className: 'slide' },
-				name
+				{ className: 'container' },
+				_react2.default.createElement('div', { className: 'item', style: { backgroundImage: 'url(' + image + ')' } })
 			);
 		}
 	}]);

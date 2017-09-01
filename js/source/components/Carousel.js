@@ -15,11 +15,11 @@ class Carousel extends Component{
 	}
 
 	renderSlides(){
-		return data.map((state)=>{
+		return data.map((obj)=>{
 			 return (
 			 	<Slide 
-					name={state.name}
-					key={state.abbreviation}
+					image={obj.image}
+					key={obj.abbreviation}
 			/>
 			);
 		})
@@ -69,7 +69,7 @@ class Carousel extends Component{
 
 	render() {
 		return (
-				<div className="container">
+				<div className="wrapper">
 					<button 
 						className="nav left-nav"
 						onClick={this.handleLeftNav}

@@ -50,10 +50,10 @@ var Carousel = function (_Component) {
 	_createClass(Carousel, [{
 		key: 'renderSlides',
 		value: function renderSlides() {
-			return _data2.default.map(function (state) {
+			return _data2.default.map(function (obj) {
 				return _react2.default.createElement(_Slide2.default, {
-					name: state.name,
-					key: state.abbreviation
+					image: obj.image,
+					key: obj.abbreviation
 				});
 			});
 		}
@@ -113,7 +113,7 @@ var Carousel = function (_Component) {
 		value: function render() {
 			return _react2.default.createElement(
 				'div',
-				{ className: 'container' },
+				{ className: 'wrapper' },
 				_react2.default.createElement(
 					'button',
 					{
