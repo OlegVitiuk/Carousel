@@ -32,6 +32,7 @@
 .nav:hover{
 	opacity: 1;
 }
+
 @media only screen and (max-width: 1323px) {
 	.viewPort{
 		max-width: 788px;
@@ -42,7 +43,7 @@
 		max-width: 384px;
 	}
 }
-@media only screen and (max-width: 515px) {
+@media only screen and (max-device-width: 515px) {
 	.nav{
 		font-size: 15px;
 		flex-basis: 20px;
