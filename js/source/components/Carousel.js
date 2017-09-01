@@ -20,44 +20,33 @@ class Carousel extends Component{
 			);
 		})
 	}
-	handleLeftNav(e){
-		const {
-			carouselViewPort} = this.refs;
-			if(window.innerWidth>515){
-				var widthOfSlide = 404;
-			}else{
-				var widthOfSlide = 340;
-			}
-			var newPos = carouselViewPort.scrollLeft - widthOfSlide;
-			console.log(newPos);
-			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
-			var timeToMoveOneSlide = 200;
-			scrollTo({
-				element: carouselViewPort,
-				to: newPos,
-				duration: timeToMoveOneSlide,
-				scrollDirection: 'scrollLeft'
-			});
+	navHandler(flag){
+        const {
+            carouselViewPort} = this.refs;
+        if(window.innerWidth>515){
+            var widthOfSlide = 404;
+        }else{
+            var widthOfSlide = 340;
+        }
+        if(flag) {
+            var newPos = carouselViewPort.scrollLeft + widthOfSlide;
+        }else{
+            var newPos = carouselViewPort.scrollLeft - widthOfSlide;
+		}
+        var timeToMoveOneSlide = 200;
+        scrollTo({
+            element: carouselViewPort,
+            to: newPos,
+            duration: timeToMoveOneSlide,
+            scrollDirection: 'scrollLeft'
+        });
+	}
+	handleLeftNav(){
+		this.navHandler(false);
 	}
 
-	handleRightNav(e){
-		const {
-			carouselViewPort} = this.refs;
-			if(window.innerWidth>515){
-				var widthOfSlide = 404;
-			}else{
-                var widthOfSlide = 340;
-			}
-			var newPos = carouselViewPort.scrollLeft  + widthOfSlide;
-			console.log(newPos);
-			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
-			var timeToMoveOneSlide = 200;
-			scrollTo({
-				element: carouselViewPort,
-				to: newPos,
-				duration: timeToMoveOneSlide,
-				scrollDirection: 'scrollLeft'
-			});
+	handleRightNav(){
+        this.navHandler(true);
 	}
 
 	render() {

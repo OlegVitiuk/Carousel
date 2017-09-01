@@ -54,8 +54,8 @@ var Carousel = function (_Component) {
 			});
 		}
 	}, {
-		key: 'handleLeftNav',
-		value: function handleLeftNav(e) {
+		key: 'navHandler',
+		value: function navHandler(flag) {
 			var carouselViewPort = this.refs.carouselViewPort;
 
 			if (window.innerWidth > 515) {
@@ -63,9 +63,11 @@ var Carousel = function (_Component) {
 			} else {
 				var widthOfSlide = 340;
 			}
-			var newPos = carouselViewPort.scrollLeft - widthOfSlide;
-			console.log(newPos);
-			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
+			if (flag) {
+				var newPos = carouselViewPort.scrollLeft + widthOfSlide;
+			} else {
+				var newPos = carouselViewPort.scrollLeft - widthOfSlide;
+			}
 			var timeToMoveOneSlide = 200;
 			(0, _scrollTo2.default)({
 				element: carouselViewPort,
@@ -75,25 +77,14 @@ var Carousel = function (_Component) {
 			});
 		}
 	}, {
+		key: 'handleLeftNav',
+		value: function handleLeftNav() {
+			this.navHandler(false);
+		}
+	}, {
 		key: 'handleRightNav',
-		value: function handleRightNav(e) {
-			var carouselViewPort = this.refs.carouselViewPort;
-
-			if (window.innerWidth > 515) {
-				var widthOfSlide = 404;
-			} else {
-				var widthOfSlide = 340;
-			}
-			var newPos = carouselViewPort.scrollLeft + widthOfSlide;
-			console.log(newPos);
-			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
-			var timeToMoveOneSlide = 200;
-			(0, _scrollTo2.default)({
-				element: carouselViewPort,
-				to: newPos,
-				duration: timeToMoveOneSlide,
-				scrollDirection: 'scrollLeft'
-			});
+		value: function handleRightNav() {
+			this.navHandler(true);
 		}
 	}, {
 		key: 'render',
