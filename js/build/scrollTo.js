@@ -12,19 +12,20 @@ function scrollTo(params) {
 
     var start = element[scrollDirection],
         change = to - start,
-        increment = 1000 / 60;
+        increment = 20;
 
     var animateScroll = function animateScroll(elapsedTime) {
         elapsedTime += increment;
         var position = easeInOut(elapsedTime, start, change, duration);
         element[scrollDirection] = position;
         if (elapsedTime < duration) {
-            window.requestAnimationFrame(animateScroll.bind(null, elapsedTime));
+            setTimeout(function () {
+                animateScroll(elapsedTime);
+            }, increment);
         }
     };
 
     animateScroll(0);
-    window.requestAnimationFrame(animateScroll.bind(null, 0));
 }
 
 function easeInOut(currentTime, start, change, duration) {

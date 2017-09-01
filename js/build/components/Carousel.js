@@ -73,8 +73,9 @@ var Carousel = function (_Component) {
 		value: function handleLeftNav(e) {
 			var carouselViewPort = this.refs.carouselViewPort;
 
-			var widthOfSlide = 500;
+			var widthOfSlide = 404;
 			var newPos = carouselViewPort.scrollLeft - widthOfSlide;
+			console.log(newPos);
 			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
 			var timeToMoveOneSlide = 200;
 			(0, _scrollTo2.default)({
@@ -89,8 +90,9 @@ var Carousel = function (_Component) {
 		value: function handleRightNav(e) {
 			var carouselViewPort = this.refs.carouselViewPort;
 
-			var widthOfSlide = 500;
+			var widthOfSlide = 404;
 			var newPos = carouselViewPort.scrollLeft + widthOfSlide;
+			console.log(newPos);
 			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
 			var timeToMoveOneSlide = 200;
 			(0, _scrollTo2.default)({

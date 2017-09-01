@@ -205,7 +205,15 @@ module.exports=[
    {
     "image": "http://res.cloudinary.com/dcny8omyw/image/upload/v1504268550/01f3e1c841cf3b864ea024d8eb0c7251--dog-pictures-animal-pictures_n41rpf.jpg",
     "index": 4
-   }
+   },
+  {
+    "image": "http://res.cloudinary.com/dcny8omyw/image/upload/v1504293288/Screenshot-2015-01-17-16.15.29_j9jpoy.png",
+    "index": 5
+  },
+  {
+    "image": "http://res.cloudinary.com/dcny8omyw/image/upload/v1504293288/Animals___Dogs_Surly_basset_hound_in_the_grass_049558__wkr6br.jpg",
+    "index": 6
+  }
 ]
 },{}],3:[function(require,module,exports){
 'use strict';
@@ -283,8 +291,9 @@ var Carousel = function (_Component) {
 		value: function handleLeftNav(e) {
 			var carouselViewPort = this.refs.carouselViewPort;
 
-			var widthOfSlide = 500;
+			var widthOfSlide = 404;
 			var newPos = carouselViewPort.scrollLeft - widthOfSlide;
+			console.log(newPos);
 			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
 			var timeToMoveOneSlide = 200;
 			(0, _scrollTo2.default)({
@@ -299,8 +308,9 @@ var Carousel = function (_Component) {
 		value: function handleRightNav(e) {
 			var carouselViewPort = this.refs.carouselViewPort;
 
-			var widthOfSlide = 500;
+			var widthOfSlide = 404;
 			var newPos = carouselViewPort.scrollLeft + widthOfSlide;
+			console.log(newPos);
 			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
 			var timeToMoveOneSlide = 200;
 			(0, _scrollTo2.default)({
@@ -428,19 +438,20 @@ function scrollTo(params) {
 
     var start = element[scrollDirection],
         change = to - start,
-        increment = 1000 / 60;
+        increment = 20;
 
     var animateScroll = function animateScroll(elapsedTime) {
         elapsedTime += increment;
         var position = easeInOut(elapsedTime, start, change, duration);
         element[scrollDirection] = position;
         if (elapsedTime < duration) {
-            window.requestAnimationFrame(animateScroll.bind(null, elapsedTime));
+            setTimeout(function () {
+                animateScroll(elapsedTime);
+            }, increment);
         }
     };
 
     animateScroll(0);
-    window.requestAnimationFrame(animateScroll.bind(null, 0));
 }
 
 function easeInOut(currentTime, start, change, duration) {

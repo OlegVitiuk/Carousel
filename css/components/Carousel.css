@@ -29,9 +29,6 @@
 	color: #ddd;
 }
 
-.nav:focus{
-	border: 2px solid darkblue;
-}
 .nav:hover{
 	opacity: 1;
 }

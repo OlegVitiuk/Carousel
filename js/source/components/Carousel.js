@@ -32,8 +32,9 @@ class Carousel extends Component{
 	handleLeftNav(e){
 		const {
 			carouselViewPort} = this.refs;
-			var widthOfSlide = 500;
+			var widthOfSlide = 404;
 			var newPos = carouselViewPort.scrollLeft - widthOfSlide;
+			console.log(newPos);
 			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
 			var timeToMoveOneSlide = 200;
 			scrollTo({
@@ -47,8 +48,9 @@ class Carousel extends Component{
 	handleRightNav(e){
 		const {
 			carouselViewPort} = this.refs;
-			var widthOfSlide = 500;
+			var widthOfSlide = 404;
 			var newPos = carouselViewPort.scrollLeft  + widthOfSlide;
+			console.log(newPos);
 			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
 			var timeToMoveOneSlide = 200;
 			scrollTo({
