@@ -2,6 +2,10 @@
 	border: 1px solid black;
 	display: inline-block;
 	vertical-align: top;
+	height: 50px;
+	width: 100px;
+	padding: 5px;
+	white-space: normal;
 }
 .slide:last-child{
 	border-right: none;

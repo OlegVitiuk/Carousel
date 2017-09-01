@@ -7,10 +7,36 @@
 	overflow-x: auto;
 	-webkit-overflow-scrolling: touch;
 	border: 1px solid black;
+	flex-grow: 1;
+}
+.viewPort::-webkit-scrollbar{
+	display: none;
+}
+.nav{
+	flex-shrink: 0;
+	flex-basis: 35px;
+	cursor: pointer;
+	background-color: grey;
+	padding: 0;
+	border: 1px solid blue;
+	outline: none;
+	opacity: .8;
+	transition: opacity .2s ease-in-out;
+}
+
+.nav:focus{
+	border: 2px solid darkblue;
+}
+.nav:hover{
+	opacity: 1;
 }.slide{
 	border: 1px solid black;
 	display: inline-block;
 	vertical-align: top;
+	height: 50px;
+	width: 100px;
+	padding: 5px;
+	white-space: normal;
 }
 .slide:last-child{
 	border-right: none;
