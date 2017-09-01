@@ -32,3 +32,26 @@
 .nav:hover{
 	opacity: 1;
 }
+@media only screen and (max-width: 1323px) {
+	.viewPort{
+		max-width: 788px;
+	}
+}
+@media only screen and (max-width: 918px) {
+	.viewPort{
+		max-width: 384px;
+	}
+}
+@media only screen and (max-width: 515px) {
+	.nav{
+		font-size: 15px;
+		flex-basis: 20px;
+	}
+	.viewPort{
+		max-width: 320px;
+	}
+	.wrapper{
+		min-width: 360px;
+	}
+
+}

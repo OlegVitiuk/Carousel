@@ -54,26 +54,15 @@ var Carousel = function (_Component) {
 			});
 		}
 	}, {
-		key: 'onResize',
-		value: function onResize() {
-			console.log("resizing");
-		}
-	}, {
-		key: 'componentDidMount',
-		value: function componentDidMount() {
-			window.addEventListener('resize', this.onResize);
-		}
-	}, {
-		key: 'componentWillUnmount',
-		value: function componentWillUnmount() {
-			window.removeEventListener('resize', this.onResize);
-		}
-	}, {
 		key: 'handleLeftNav',
 		value: function handleLeftNav(e) {
 			var carouselViewPort = this.refs.carouselViewPort;
 
-			var widthOfSlide = 404;
+			if (window.innerWidth > 515) {
+				var widthOfSlide = 404;
+			} else {
+				var widthOfSlide = 340;
+			}
 			var newPos = carouselViewPort.scrollLeft - widthOfSlide;
 			console.log(newPos);
 			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
@@ -90,7 +79,11 @@ var Carousel = function (_Component) {
 		value: function handleRightNav(e) {
 			var carouselViewPort = this.refs.carouselViewPort;
 
-			var widthOfSlide = 404;
+			if (window.innerWidth > 515) {
+				var widthOfSlide = 404;
+			} else {
+				var widthOfSlide = 340;
+			}
 			var newPos = carouselViewPort.scrollLeft + widthOfSlide;
 			console.log(newPos);
 			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;

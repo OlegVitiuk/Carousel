@@ -21,3 +21,9 @@
 .container:last-child{
 	margin-right: 0;
 }
+@media only screen and (max-width: 515px) {
+	.container {
+		width: 320px;
+		heigth: 400px;
+	}
+}

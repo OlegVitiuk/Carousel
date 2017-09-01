@@ -20,19 +20,14 @@ class Carousel extends Component{
 			);
 		})
 	}
-	onResize(){
-		console.log("resizing");
-	}
-	componentDidMount() {
-		window.addEventListener('resize',this.onResize);
-	}
-	componentWillUnmount() {
-		window.removeEventListener('resize',this.onResize);
-	}
 	handleLeftNav(e){
 		const {
 			carouselViewPort} = this.refs;
-			var widthOfSlide = 404;
+			if(window.innerWidth>515){
+				var widthOfSlide = 404;
+			}else{
+				var widthOfSlide = 340;
+			}
 			var newPos = carouselViewPort.scrollLeft - widthOfSlide;
 			console.log(newPos);
 			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;
@@ -48,7 +43,11 @@ class Carousel extends Component{
 	handleRightNav(e){
 		const {
 			carouselViewPort} = this.refs;
-			var widthOfSlide = 404;
+			if(window.innerWidth>515){
+				var widthOfSlide = 404;
+			}else{
+                var widthOfSlide = 340;
+			}
 			var newPos = carouselViewPort.scrollLeft  + widthOfSlide;
 			console.log(newPos);
 			//var newPos = carouselViewPort.scrollLeft + carouselViewPort.offsetWidth;

@@ -32,6 +32,29 @@
 .nav:hover{
 	opacity: 1;
 }
+@media only screen and (max-width: 1323px) {
+	.viewPort{
+		max-width: 788px;
+	}
+}
+@media only screen and (max-width: 918px) {
+	.viewPort{
+		max-width: 384px;
+	}
+}
+@media only screen and (max-width: 515px) {
+	.nav{
+		font-size: 15px;
+		flex-basis: 20px;
+	}
+	.viewPort{
+		max-width: 320px;
+	}
+	.wrapper{
+		min-width: 360px;
+	}
+
+}
 .container{
 	width:384px;
 	height:500px;
@@ -54,6 +77,12 @@
 }
 .container:last-child{
 	margin-right: 0;
+}
+@media only screen and (max-width: 515px) {
+	.container {
+		width: 320px;
+		heigth: 400px;
+	}
 }*, *::before, *::after{
 	box-sizing: border-box;
 }
@@ -71,6 +100,12 @@ body{
 
 #app{
 	padding: 20px;
+}
+@media only screen and (max-width: 515px) {
+	#app{
+		padding-left: 0;
+		padding-right: 0;
+	}
 }/*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
